@@ -10,6 +10,9 @@ type HeroProps = {
 };
 
 export default function Hero({ data }: HeroProps) {
+  if (!data) {
+    return null;
+  }
   const mediaUrl = getMediaUrl(data.media);
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-white">

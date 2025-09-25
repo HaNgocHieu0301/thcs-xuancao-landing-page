@@ -1,9 +1,11 @@
 import { parse } from 'pg-connection-string';
 
 export default ({ env }) => {
-  const { host, port, database, user, password } = parse(
-    env('DATABASE_URL', 'postgres://strapi:strapi@localhost:5432/strapi'),
+  const connectionString = env(
+    'DATABASE_URL',
+    'postgres://strapi:strapi@localhost:5432/strapi',
   );
+  const { host, port, database, user, password } = parse(connectionString);
 
   return {
     connection: {

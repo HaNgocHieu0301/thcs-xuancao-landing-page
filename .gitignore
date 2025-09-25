@@ -8,6 +8,7 @@ node_modules/
 dist/
 .env
 .env.*
+!.env.example
 
 # Logs
 npm-debug.log*
@@ -19,6 +20,8 @@ pnpm-debug.log*
 cms/.cache/
 cms/build/
 cms/public/uploads/
+cms/config/*.js
+cms/src/admin/*.js
 
 # Editor
 .DS_Store

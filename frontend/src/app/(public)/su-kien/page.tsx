@@ -55,8 +55,8 @@ export default async function EventsPage({ searchParams }: EventsPageProps) {
           ))}
         </div>
         <Pagination
-          currentPage={eventsRes.pagination.page}
-          totalPages={eventsRes.pagination.pageCount}
+          currentPage={eventsRes.meta.pagination?.page || 1}
+          totalPages={eventsRes.meta.pagination?.pageCount || 1}
           basePath="/su-kien"
         />
       </div>

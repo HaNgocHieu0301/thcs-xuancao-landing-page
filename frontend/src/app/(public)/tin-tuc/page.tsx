@@ -56,8 +56,8 @@ export default async function NewsPage({ searchParams }: NewsPageProps) {
           ))}
         </div>
         <Pagination
-          currentPage={postsRes.pagination.page}
-          totalPages={postsRes.pagination.pageCount}
+          currentPage={postsRes.meta.pagination.page}
+          totalPages={postsRes.meta.pagination.pageCount}
           basePath="/tin-tuc"
         />
       </div>

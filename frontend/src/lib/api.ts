@@ -255,71 +255,72 @@ const sampleOrganization: OrganizationProfile = {
 };
 
 export async function fetchHomePage(): Promise<HomePageData> {
-  return fetchFromStrapi<HomePageData>('/homepage?populate=deep');
+  const response = await fetchFromStrapi<{data: HomePageData}>('/homepage?populate=*');
+  return response.data;
 }
 
 export async function fetchPosts(page = 1, pageSize = 12): Promise<PaginatedResponse<Post>> {
   return fetchFromStrapi<PaginatedResponse<Post>>(
-    `/posts?populate=deep&pagination[page]=${page}&pagination[pageSize]=${pageSize}`,
+    `/posts?populate=*&pagination[page]=${page}&pagination[pageSize]=${pageSize}`,
   );
 }
 
 export async function fetchPostBySlug(slug: string): Promise<Post | null> {
   const res = await fetchFromStrapi<PaginatedResponse<Post>>(
-    `/posts?filters[slug][$eq]=${slug}&populate=deep`,
+    `/posts?filters[slug][$eq]=${slug}&populate=*`,
   );
   return res.data?.[0] ?? null;
 }
 
 export async function fetchEvents(page = 1, pageSize = 12): Promise<PaginatedResponse<Event>> {
   return fetchFromStrapi<PaginatedResponse<Event>>(
-    `/events?populate=deep&sort=startDate:asc&pagination[page]=${page}&pagination[pageSize]=${pageSize}`,
+    `/events?populate=*&sort=startDate:asc&pagination[page]=${page}&pagination[pageSize]=${pageSize}`,
   );
 }
 
 export async function fetchEventBySlug(slug: string): Promise<Event | null> {
   const res = await fetchFromStrapi<PaginatedResponse<Event>>(
-    `/events?filters[slug][$eq]=${slug}&populate=deep`,
+    `/events?filters[slug][$eq]=${slug}&populate=*`,
   );
   return res.data?.[0] ?? null;
 }
 
 export async function fetchTeachers(): Promise<PaginatedResponse<Teacher>> {
-  return fetchFromStrapi<PaginatedResponse<Teacher>>('/teachers?populate=deep');
+  return fetchFromStrapi<PaginatedResponse<Teacher>>('/teachers?populate=*');
 }
 
 export async function fetchTeacherBySlug(slug: string): Promise<Teacher | null> {
   const res = await fetchFromStrapi<PaginatedResponse<Teacher>>(
-    `/teachers?filters[slug][$eq]=${slug}&populate=deep`,
+    `/teachers?filters[slug][$eq]=${slug}&populate=*`,
   );
   return res.data?.[0] ?? null;
 }
 
 export async function fetchAchievements(): Promise<PaginatedResponse<Achievement>> {
-  return fetchFromStrapi<PaginatedResponse<Achievement>>('/achievements?populate=deep');
+  return fetchFromStrapi<PaginatedResponse<Achievement>>('/achievements?populate=*');
 }
 
 export async function fetchAchievementBySlug(slug: string): Promise<Achievement | null> {
   const res = await fetchFromStrapi<PaginatedResponse<Achievement>>(
-    `/achievements?filters[slug][$eq]=${slug}&populate=deep`,
+    `/achievements?filters[slug][$eq]=${slug}&populate=*`,
   );
   return res.data?.[0] ?? null;
 }
 
 export async function fetchTestimonials(): Promise<Testimonial[]> {
   const res = await fetchFromStrapi<PaginatedResponse<Testimonial>>(
-    `/testimonials?filters[featured][$eq]=true&populate=deep`,
+    `/testimonials?filters[featured][$eq]=true&populate=*`,
   );
   return res.data ?? [];
 }
 
 export async function fetchAlbums(): Promise<PaginatedResponse<Album>> {
-  return fetchFromStrapi<PaginatedResponse<Album>>('/albums?populate=deep');
+  return fetchFromStrapi<PaginatedResponse<Album>>('/albums?populate=*');
 }
 
 export async function fetchAlbumBySlug(slug: string) {
   const res = await fetchFromStrapi<PaginatedResponse<Album>>(
-    `/albums?filters[slug][$eq]=${slug}&populate=deep`,
+    `/albums?filters[slug][$eq]=${slug}&populate=*`,
   );
   return res.data?.[0] ?? null;
 }
@@ -332,13 +333,13 @@ export async function fetchAnnouncements(): Promise<PaginatedResponse<Announceme
 }
 
 export async function fetchAboutPage(): Promise<AboutPage> {
-  return fetchFromStrapi<AboutPage>('/about?populate=deep');
+  return fetchFromStrapi<AboutPage>('/about?populate=*');
 }
 
 export async function fetchContactPage(): Promise<ContactPage> {
-  return fetchFromStrapi<ContactPage>('/contact?populate=deep');
+  return fetchFromStrapi<ContactPage>('/contact?populate=*');
 }
 
 export async function fetchOrganizationProfile(): Promise<OrganizationProfile> {
-  return fetchFromStrapi<OrganizationProfile>('/organization?populate=deep');
+  return fetchFromStrapi<OrganizationProfile>('/organization?populate=*');
 }

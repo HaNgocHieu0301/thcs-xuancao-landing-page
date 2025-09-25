@@ -61,7 +61,6 @@ Strapi đã khai báo đầy đủ collection types, single types, component SEO
 
 ## Tiếp theo
 
-- Kết nối Cloudinary bằng cách khai báo `CLOUDINARY_URL`, `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET` trong CMS.
+Kết nối Cloudflare R2 bằng cách khai báo `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET`, `R2_ENDPOINT` (tùy chọn thêm `R2_REGION`, `R2_BUCKET_PREFIX`, `R2_PUBLIC_BASE_URL`) trong CMS.
 - Thiết lập GA4 theo `NEXT_PUBLIC_GA_ID`.
 - Tạo workflows biên tập trên Strapi (Author → Editor → Publish).
-

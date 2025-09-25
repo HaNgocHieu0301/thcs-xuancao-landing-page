@@ -1,24 +1,46 @@
-export default ({ env }) => ({
-  seo: {
-    enabled: true,
-  },
-  graphql: {
-    enabled: true,
-    config: {
-      endpoint: '/graphql',
-      playgroundAlways: false,
+export default ({ env }) => {
+  const isR2Enabled = Boolean(
+    env('R2_ACCESS_KEY_ID') &&
+      env('R2_SECRET_ACCESS_KEY') &&
+      env('R2_BUCKET') &&
+      env('R2_ENDPOINT')
+  );
+  return {
+    seo: {
+      enabled: true,
     },
-  },
-  upload: {
-    config: {
-      provider: env('CLOUDINARY_URL') ? 'cloudinary' : 'local',
-      providerOptions: env('CLOUDINARY_URL')
-        ? {
-            cloud_name: env('CLOUDINARY_CLOUD_NAME'),
-            api_key: env('CLOUDINARY_API_KEY'),
-            api_secret: env('CLOUDINARY_API_SECRET'),
-          }
-        : {},
+    graphql: {
+      enabled: true,
+      config: {
+        endpoint: '/graphql',
+        playgroundAlways: false,
+      },
     },
-  },
-});
+    upload: {
+      config: {
+        provider: isR2Enabled ? 'aws-s3' : 'local',
+        providerOptions: isR2Enabled
+          ? {
+              baseUrl: env('R2_PUBLIC_BASE_URL'),
+              bucket: env('R2_BUCKET'),
+              bucketPrefix: env('R2_BUCKET_PREFIX'),
+              s3Options: {
+                credentials: {
+                  accessKeyId: env('R2_ACCESS_KEY_ID'),
+                  secretAccessKey: env('R2_SECRET_ACCESS_KEY'),
+                },
+                endpoint: env('R2_ENDPOINT'),
+                region: env('R2_REGION', 'auto'),
+                forcePathStyle: true,
+              },
+            }
+          : {},
+        actionOptions: {
+          upload: {},
+          uploadStream: {},
+          delete: {},
+        },
+      },
+    },
+  };
+};
