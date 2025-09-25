@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_shared_seo",
+  "info": {
+    "displayName": "SEO",
+    "description": "SEO meta fields"
+  },
+  "attributes": {
+    "metaTitle": {
+      "type": "string",
+      "maxLength": 70,
+      "required": false
+    },
+    "metaDescription": {
+      "type": "text",
+      "maxLength": 160
+    },
+    "ogImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "canonicalURL": {
+      "type": "string"
+    }
+  }
+}

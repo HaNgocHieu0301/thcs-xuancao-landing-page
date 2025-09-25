@@ -1,0 +1,26 @@
+# Node
+node_modules/
+.npm/
+.pnpm-store/
+.yarn/
+.next/
+.out/
+dist/
+.env
+.env.*
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Strapi
+cms/.cache/
+cms/build/
+cms/public/uploads/
+
+# Editor
+.DS_Store
+.idea/
+.vscode/

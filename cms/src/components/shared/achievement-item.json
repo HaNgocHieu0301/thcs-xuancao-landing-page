@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_achievement_items",
+  "info": {
+    "displayName": "Achievement"
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "year": {
+      "type": "integer"
+    },
+    "level": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

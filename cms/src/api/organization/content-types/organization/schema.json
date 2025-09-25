@@ -1,0 +1,33 @@
+{
+  "kind": "singleType",
+  "collectionName": "organization",
+  "info": {
+    "singularName": "organization",
+    "pluralName": "organizations",
+    "displayName": "ThongTinTruong"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "legalName": {
+      "type": "string",
+      "required": true
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "foundingDate": {
+      "type": "date"
+    },
+    "sameAs": {
+      "type": "json"
+    },
+    "seo": {
+      "type": "component",
+      "component": "shared.seo"
+    }
+  }
+}
