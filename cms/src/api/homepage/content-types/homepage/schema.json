@@ -1,0 +1,42 @@
+{
+  "kind": "singleType",
+  "collectionName": "homepage",
+  "info": {
+    "singularName": "homepage",
+    "pluralName": "homepages",
+    "displayName": "HomePage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "hero": {
+      "type": "component",
+      "component": "blocks.hero"
+    },
+    "news": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::post.post"
+    },
+    "events": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::event.event"
+    },
+    "schoolLife": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::album.album"
+    },
+    "testimonials": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::testimonial.testimonial"
+    },
+    "seo": {
+      "type": "component",
+      "component": "shared.seo"
+    }
+  }
+}

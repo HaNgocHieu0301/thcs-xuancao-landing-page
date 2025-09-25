@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_blocks_hero",
+  "info": {
+    "displayName": "Hero"
+  },
+  "attributes": {
+    "headline": {
+      "type": "string",
+      "required": true
+    },
+    "subheadline": {
+      "type": "text"
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images", "videos"]
+    },
+    "primaryCta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.cta"
+    },
+    "secondaryCta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.cta"
+    }
+  }
+}

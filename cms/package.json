@@ -1,0 +1,27 @@
+{
+  "name": "thcs-landing-cms",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "dependencies": {
+    "@strapi/plugin-seo": "^1.0.0",
+    "@strapi/plugin-sentry": "^5.0.0",
+    "@strapi/strapi": "^5.0.0",
+    "@strapi/plugin-graphql": "^5.0.0",
+    "@strapi/provider-upload-cloudinary": "^5.0.0",
+    "pg": "^8.11.5",
+    "pg-connection-string": "^2.6.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "typescript": "^5.4.5"
+  }
+}

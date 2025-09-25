@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "about",
+  "info": {
+    "singularName": "about",
+    "pluralName": "abouts",
+    "displayName": "GioiThieu"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Giới thiệu"
+    },
+    "mission": {
+      "type": "richtext"
+    },
+    "vision": {
+      "type": "richtext"
+    },
+    "history": {
+      "type": "richtext"
+    },
+    "stats": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.stat-item"
+    },
+    "seo": {
+      "type": "component",
+      "component": "shared.seo"
+    }
+  }
+}
