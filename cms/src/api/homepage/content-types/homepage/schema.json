@@ -20,11 +20,6 @@
       "relation": "manyToMany",
       "target": "api::post.post"
     },
-    "events": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::event.event"
-    },
     "schoolLife": {
       "type": "relation",
       "relation": "manyToMany",

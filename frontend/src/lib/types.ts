@@ -48,20 +48,6 @@ export type Post = {
   seo?: Seo | null;
 };
 
-export type Event = {
-  id: number | string;
-  title: string;
-  slug: string;
-  description?: string | null;
-  startDate: string;
-  endDate?: string | null;
-  location?: string | null;
-  coverImage?: Media | null;
-  gallery?: Media[];
-  rsvpLink?: string | null;
-  seo?: Seo | null;
-};
-
 export type Teacher = {
   id: number | string;
   name: string;
@@ -116,7 +102,6 @@ export type Announcement = {
 export type HomePageData = {
   hero: HeroBlock;
   news: Post[];
-  events: Event[];
   schoolLife: Album[];
   testimonials: Testimonial[];
   seo?: Seo | null;

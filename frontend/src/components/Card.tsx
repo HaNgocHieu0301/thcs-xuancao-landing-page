@@ -38,7 +38,6 @@ export default function Card({ href, title, description, media, meta, className 
         {meta && <span className="text-xs font-semibold uppercase tracking-wide text-primary-600">{meta}</span>}
         <h3 className="text-lg font-semibold text-slate-900 group-hover:text-primary-600">{title}</h3>
         {description && <p className="text-sm text-slate-600">{description}</p>}
-        <div className="mt-auto pt-4 text-sm font-semibold text-primary-600">Đọc thêm →</div>
       </div>
     </Link>
   );

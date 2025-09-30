@@ -56,7 +56,6 @@ export default async function RootLayout({
               <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
                 <a href="/">Trang chủ</a>
                 <a href="/tin-tuc">Tin tức</a>
-                <a href="/su-kien">Sự kiện</a>
                 <a href="/gioi-thieu">Giới thiệu</a>
                 <a href="/doi-ngu">Đội ngũ</a>
                 <a href="/thanh-tich">Thành tích</a>

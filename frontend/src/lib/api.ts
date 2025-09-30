@@ -2,7 +2,6 @@ import 'server-only';
 
 import type {
   Album,
-  Event,
   HomePageData,
   PaginatedResponse,
   Post,
@@ -61,7 +60,6 @@ function fallbackData(endpoint: string): unknown {
           secondaryCta: { label: 'Đăng ký tham quan', url: '/lien-he' },
         },
         news: samplePosts,
-        events: sampleEvents,
         schoolLife: sampleAlbums,
         testimonials: sampleTestimonials,
       } satisfies HomePageData;
@@ -75,16 +73,6 @@ function fallbackData(endpoint: string): unknown {
           total: samplePosts.length,
         },
       } satisfies PaginatedResponse<Post>;
-    case endpoint.includes('/events'):
-      return {
-        data: sampleEvents,
-        pagination: {
-          page: 1,
-          pageSize: sampleEvents.length,
-          pageCount: 1,
-          total: sampleEvents.length,
-        },
-      } satisfies PaginatedResponse<Event>;
     case endpoint.includes('/teachers'):
       return {
         data: sampleTeachers,
@@ -157,28 +145,6 @@ const samplePosts: Post[] = [
     slug: 'chuoi-hoat-dong-trai-nghiem-stem-2024',
     excerpt: 'Học sinh hào hứng tham gia các dự án STEM sáng tạo.',
     publishedAt: '2024-03-21T08:00:00.000Z',
-  },
-];
-
-const sampleEvents: Event[] = [
-  {
-    id: 1,
-    title: 'Ngày hội Khoa học Sáng tạo',
-    slug: 'ngay-hoi-khoa-hoc-sang-tao',
-    description:
-      'Ngày hội trình diễn các dự án khoa học của học sinh toàn trường, kết nối phụ huynh và cộng đồng.',
-    startDate: '2024-11-10T01:00:00.000Z',
-    endDate: '2024-11-10T08:00:00.000Z',
-    location: 'Khuôn viên trường THCS Xuân Cao',
-  },
-  {
-    id: 2,
-    title: 'Hội thảo định hướng nghề nghiệp',
-    slug: 'hoi-thao-dinh-huong-nghe-nghiep',
-    description:
-      'Chuyên gia chia sẻ về kỹ năng tương lai và lựa chọn định hướng học tập cho học sinh lớp 9.',
-    startDate: '2024-10-02T02:00:00.000Z',
-    location: 'Phòng đa năng, Trường THCS Xuân Cao',
   },
 ];
 
@@ -256,7 +222,7 @@ const sampleOrganization: OrganizationProfile = {
 
 export async function fetchHomePage(): Promise<HomePageData> {
   const response = await fetchFromStrapi<{data: HomePageData}>(
-    '/homepage?populate[hero][populate]=*&populate[news][populate]=*&populate[events][populate]=*&populate[schoolLife][populate]=*&populate[testimonials][populate]=*&populate[seo][populate]=*'
+    '/homepage?populate[hero][populate]=*&populate[news][populate]=*&populate[schoolLife][populate]=*&populate[testimonials][populate]=*&populate[seo][populate]=*'
   );
   return response.data;
 }
@@ -270,19 +236,6 @@ export async function fetchPosts(page = 1, pageSize = 12): Promise<PaginatedResp
 export async function fetchPostBySlug(slug: string): Promise<Post | null> {
   const res = await fetchFromStrapi<PaginatedResponse<Post>>(
     `/posts?filters[slug][$eq]=${slug}&populate=*`,
-  );
-  return res.data?.[0] ?? null;
-}
-
-export async function fetchEvents(page = 1, pageSize = 12): Promise<PaginatedResponse<Event>> {
-  return fetchFromStrapi<PaginatedResponse<Event>>(
-    `/events?populate=*&sort=startDate:asc&pagination[page]=${page}&pagination[pageSize]=${pageSize}`,
-  );
-}
-
-export async function fetchEventBySlug(slug: string): Promise<Event | null> {
-  const res = await fetchFromStrapi<PaginatedResponse<Event>>(
-    `/events?filters[slug][$eq]=${slug}&populate=*`,
   );
   return res.data?.[0] ?? null;
 }

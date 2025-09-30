@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Post, Event, Seo, HomePageData, BreadcrumbItem } from './types';
+import { Post, Seo, HomePageData, BreadcrumbItem } from './types';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://thcs-abc.edu.vn';
 
@@ -53,17 +53,6 @@ export function buildArticleMetadata(post: Post): Metadata {
   } satisfies Metadata;
 }
 
-export function buildEventMetadata(event: Event): Metadata {
-  return buildSeoMetadata(event.seo, {
-    title: event.title,
-    description: event.description ?? undefined,
-    openGraph: {
-      type: 'event',
-      url: `${SITE_URL}/su-kien/${event.slug}`,
-    },
-  });
-}
-
 export function buildHomeMetadata(home: HomePageData): Metadata {
   return buildSeoMetadata(home.seo, {
     title: 'Trường THCS Xuân Cao',
@@ -96,25 +85,6 @@ export function buildArticleJsonLd(post: Post) {
       '@type': 'WebPage',
       '@id': `${SITE_URL}/tin-tuc/${post.slug}`,
     },
-  };
-}
-
-export function buildEventJsonLd(event: Event) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Event',
-    name: event.title,
-    startDate: event.startDate,
-    endDate: event.endDate ?? undefined,
-    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-    eventStatus: 'https://schema.org/EventScheduled',
-    location: {
-      '@type': 'Place',
-      name: event.location ?? 'Trường THCS Xuân Cao',
-      address: event.location ?? 'Trường THCS Xuân Cao',
-    },
-    image: event.coverImage?.url ? [absoluteUrl(event.coverImage.url)] : undefined,
-    description: event.description ?? undefined,
   };
 }
 

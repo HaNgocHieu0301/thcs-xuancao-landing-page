@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Hero from '@/components/Hero';
 import NewsGrid from '@/components/NewsGrid';
-import EventsList from '@/components/EventsList';
 import Gallery from '@/components/Gallery';
 import Testimonials from '@/components/Testimonials';
 import { fetchHomePage } from '@/lib/api';
@@ -21,9 +20,6 @@ export default async function HomePage() {
       <Hero data={data.hero} />
       <section className="container">
         <NewsGrid posts={data.news} />
-      </section>
-      <section className="container">
-        <EventsList events={data.events} />
       </section>
       <section className="container">
         <Gallery items={data.schoolLife} />

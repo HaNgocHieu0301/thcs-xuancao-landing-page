@@ -22,8 +22,7 @@ export default ({ env }) => {
         providerOptions: isR2Enabled
           ? {
               baseUrl: env('R2_PUBLIC_BASE_URL'),
-              bucket: env('R2_BUCKET'),
-              bucketPrefix: env('R2_BUCKET_PREFIX'),
+              rootPath: env('R2_BUCKET_PREFIX', ''),
               s3Options: {
                 credentials: {
                   accessKeyId: env('R2_ACCESS_KEY_ID'),
@@ -31,7 +30,10 @@ export default ({ env }) => {
                 },
                 endpoint: env('R2_ENDPOINT'),
                 region: env('R2_REGION', 'auto'),
-                forcePathStyle: true,
+                params: {
+                  ACL: env('R2_ACL', 'public-read'),
+                  Bucket: env('R2_BUCKET'),
+                },
               },
             }
           : {},

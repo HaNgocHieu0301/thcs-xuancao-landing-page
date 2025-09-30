@@ -1,7 +1,6 @@
 import { MetadataRoute } from 'next';
 import {
   fetchPosts,
-  fetchEvents,
   fetchTeachers,
   fetchAchievements,
   fetchAlbums,
@@ -10,9 +9,8 @@ import {
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://thcs-abc.edu.vn';
 
 export async function GET(): Promise<MetadataRoute.Sitemap> {
-  const [posts, events, teachers, achievements, albums] = await Promise.all([
+  const [posts, teachers, achievements, albums] = await Promise.all([
     fetchPosts(1, 100),
-    fetchEvents(1, 100),
     fetchTeachers(),
     fetchAchievements(),
     fetchAlbums(),
@@ -21,7 +19,6 @@ export async function GET(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes: MetadataRoute.Sitemap = [
     '',
     '/tin-tuc',
-    '/su-kien',
     '/gioi-thieu',
     '/doi-ngu',
     '/thanh-tich',
@@ -34,10 +31,6 @@ export async function GET(): Promise<MetadataRoute.Sitemap> {
     ...posts.data.map((post) => ({
       url: `${SITE_URL}/tin-tuc/${post.slug}`,
       lastModified: post.publishedAt ? new Date(post.publishedAt) : new Date(),
-    })),
-    ...events.data.map((event) => ({
-      url: `${SITE_URL}/su-kien/${event.slug}`,
-      lastModified: event.startDate ? new Date(event.startDate) : new Date(),
     })),
     ...teachers.data.map((teacher) => ({
       url: `${SITE_URL}/doi-ngu/${teacher.slug}`,

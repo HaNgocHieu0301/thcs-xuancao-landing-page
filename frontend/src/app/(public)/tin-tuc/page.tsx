@@ -1,9 +1,8 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
 import PageHeader from '@/components/PageHeader';
-import Card from '@/components/Card';
+import NewsList from '@/components/NewsList';
 import { fetchPosts } from '@/lib/api';
-import { formatDate } from '@/lib/utils';
 import { buildSeoMetadata, buildBreadcrumbJsonLd } from '@/lib/seo';
 
 export const revalidate = 1800;
@@ -43,18 +42,7 @@ export default async function NewsPage({ searchParams }: NewsPageProps) {
         breadcrumbs={breadcrumbs}
       />
       <div className="container py-12">
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {postsRes.data.map((post) => (
-            <Card
-              key={post.id}
-              href={`/tin-tuc/${post.slug}`}
-              title={post.title}
-              description={post.excerpt}
-              media={post.coverImage}
-              meta={post.publishedAt ? formatDate(post.publishedAt) : undefined}
-            />
-          ))}
-        </div>
+        <NewsList posts={postsRes.data} />
         <Pagination
           currentPage={postsRes.meta.pagination.page}
           totalPages={postsRes.meta.pagination.pageCount}
