@@ -14,6 +14,22 @@ export interface BlocksHero extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksHeroSlide extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_hero_slide';
+  info: {
+    description: 'Individual hero carousel slide with optional link';
+    displayName: 'Hero Slide';
+  };
+  attributes: {
+    headline: Schema.Attribute.String & Schema.Attribute.Required;
+    linkUrl: Schema.Attribute.String;
+    media: Schema.Attribute.Media<'images' | 'videos'>;
+    primaryCta: Schema.Attribute.Component<'shared.cta', false>;
+    secondaryCta: Schema.Attribute.Component<'shared.cta', false>;
+    subheadline: Schema.Attribute.Text;
+  };
+}
+
 export interface SharedAchievementItem extends Struct.ComponentSchema {
   collectionName: 'components_shared_achievement_items';
   info: {
@@ -74,6 +90,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'blocks.hero': BlocksHero;
+      'blocks.hero-slide': BlocksHeroSlide;
       'shared.achievement-item': SharedAchievementItem;
       'shared.cta': SharedCta;
       'shared.seo': SharedSeo;

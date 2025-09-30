@@ -38,7 +38,7 @@ async function fetchFromStrapi<T>(endpoint: string, options: RequestInit = {}): 
   const res = await fetch(`${STRAPI_API_URL}${normalized}`, {
     ...options,
     headers,
-    next: { revalidate: 3600 },
+    cache: 'no-store',
   });
 
   if (!res.ok) {
@@ -255,7 +255,9 @@ const sampleOrganization: OrganizationProfile = {
 };
 
 export async function fetchHomePage(): Promise<HomePageData> {
-  const response = await fetchFromStrapi<{data: HomePageData}>('/homepage?populate=*');
+  const response = await fetchFromStrapi<{data: HomePageData}>(
+    '/homepage?populate[hero][populate]=*&populate[news][populate]=*&populate[events][populate]=*&populate[schoolLife][populate]=*&populate[testimonials][populate]=*&populate[seo][populate]=*'
+  );
   return response.data;
 }
 

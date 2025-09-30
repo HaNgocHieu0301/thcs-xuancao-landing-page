@@ -19,13 +19,17 @@ export type Seo = {
   canonicalURL?: string | null;
 };
 
-export type HeroBlock = {
+export type HeroSlide = {
+  id?: number | string;
   headline: string;
   subheadline?: string | null;
   media?: Media | null;
   primaryCta?: CTA | null;
   secondaryCta?: CTA | null;
+  linkUrl?: string | null;
 };
+
+export type HeroBlock = HeroSlide | HeroSlide[];
 
 export type CTA = {
   label: string;

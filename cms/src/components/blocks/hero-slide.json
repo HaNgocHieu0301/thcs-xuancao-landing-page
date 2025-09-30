@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_blocks_hero_slide",
+  "info": {
+    "displayName": "Hero Slide",
+    "description": "Individual hero carousel slide with optional link"
+  },
+  "attributes": {
+    "headline": {
+      "type": "string",
+      "required": true
+    },
+    "subheadline": {
+      "type": "text"
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images", "videos"]
+    },
+    "primaryCta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.cta"
+    },
+    "secondaryCta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.cta"
+    },
+    "linkUrl": {
+      "type": "string",
+      "description": "URL to redirect when clicking the slide image"
+    }
+  }
+}

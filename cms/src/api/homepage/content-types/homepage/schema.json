@@ -12,7 +12,8 @@
   "attributes": {
     "hero": {
       "type": "component",
-      "component": "blocks.hero"
+      "repeatable": true,
+      "component": "blocks.hero-slide"
     },
     "news": {
       "type": "relation",
